@@ -10,7 +10,17 @@ function indexPost(req, res) {
 
 // EDIT
 function editPost(req, res) {
-  res.send("EDIT:" + req.params.id);
+  data = processData(req.body);
+  res.sendStatus(200);
+}
+
+function processData(data) {
+  var newData = [];
+  for (var i = 0; i < data.firstname.length; i++) {
+    var obj = { "firstname" : data.firstname[i], "surname" : data.surname [i] };
+    newData.push(obj);
+  }
+  return newData;
 }
 
 module.exports = {
